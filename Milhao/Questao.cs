@@ -41,9 +41,38 @@ public class Questao
         buttonResposta5.Text = resposta5;
     }
 
-    public void VerifiicarResposta(int respostaescolhida)
+    private Button buttonEscolhido(int respostaescolhida)
     {
-        respostacerta = respostaescolhida;
+        if (respostaescolhida == 1)
+            return buttonResposta1;
+        else if (respostaescolhida == 2)
+            return buttonResposta2;
+        else if (respostaescolhida == 3)
+            return buttonResposta3;
+        else if (respostaescolhida == 4)
+            return buttonResposta4;
+        else if (respostaescolhida == 5)
+            return buttonResposta5;
+        else 
+            return null;
+    }
+
+    public bool VerifiicarResposta(int respostaescolhida)
+    {
+        if (respostacerta == respostaescolhida)
+        {
+            var verificacao = buttonEscolhido(respostaescolhida);
+            verificacao.BackgroundColor = Colors.Green;
+            return true;
+        }
+        else
+        {
+            var verificacaoCorreto = buttonEscolhido(respostacerta);
+            var verificacaoIncorreto = buttonEscolhido(respostaescolhida);
+            verificacaoCorreto.BackgroundColor = Colors.Yellow;
+            verificacaoIncorreto.BackgroundColor = Colors.Red;
+            return false;
+        }
     }
     
     public void ConfigurarEstruturaDesenho(Label pergunta, Button resposta1, Button resposta2, Button resposta3, Button resposta4, Button resposta5)
@@ -58,7 +87,6 @@ public class Questao
 
     public Questao()
     {
-
     }
 
     public Questao(Label pergunta, Button resposta1, Button resposta2, Button resposta3, Button resposta4, Button resposta5)
