@@ -17,6 +17,8 @@ public class Questao
 
     public int respostacerta;
 
+    public string imagem;
+
     public int nivel;
 
     Label labelPergunta;
@@ -31,6 +33,8 @@ public class Questao
 
     Button buttonResposta5;
 
+    Image componenteImagem;
+
     public void Desenhar()
     {
         labelPergunta.Text = pergunta;
@@ -39,6 +43,18 @@ public class Questao
         buttonResposta3.Text = resposta3;
         buttonResposta4.Text = resposta4;
         buttonResposta5.Text = resposta5;
+        componenteImagem.Source = imagem;
+
+        buttonResposta1.BackgroundColor = Color.FromRgba("#abee93");
+        buttonResposta1.TextColor = Color.FromRgba("#2d938e");
+        buttonResposta2.BackgroundColor = Color.FromRgba("#abee93");
+        buttonResposta2.TextColor = Color.FromRgba("#2d938e");
+        buttonResposta3.BackgroundColor = Color.FromRgba("#abee93");
+        buttonResposta3.TextColor = Color.FromRgba("#2d938e");
+        buttonResposta4.BackgroundColor = Color.FromRgba("#abee93");
+        buttonResposta4.TextColor = Color.FromRgba("#2d938e");
+        buttonResposta5.BackgroundColor = Color.FromRgba("#abee93");
+        buttonResposta5.TextColor = Color.FromRgba("#2d938e");
     }
 
     private Button buttonEscolhido(int respostaescolhida)
@@ -63,6 +79,7 @@ public class Questao
         {
             var verificacao = buttonEscolhido(respostaescolhida);
             verificacao.BackgroundColor = Colors.Green;
+            verificacao.TextColor = Colors.White;
             return true;
         }
         else
@@ -70,12 +87,14 @@ public class Questao
             var verificacaoCorreto = buttonEscolhido(respostacerta);
             var verificacaoIncorreto = buttonEscolhido(respostaescolhida);
             verificacaoCorreto.BackgroundColor = Colors.Yellow;
+            verificacaoCorreto.TextColor = Colors.Black;
             verificacaoIncorreto.BackgroundColor = Colors.Red;
+            verificacaoIncorreto.TextColor = Colors.White;
             return false;
         }
     }
     
-    public void ConfigurarEstruturaDesenho(Label pergunta, Button resposta1, Button resposta2, Button resposta3, Button resposta4, Button resposta5)
+    public void ConfigurarEstruturaDesenho(Label pergunta, Button resposta1, Button resposta2, Button resposta3, Button resposta4, Button resposta5, Image imagem)
     {
         labelPergunta = pergunta;
         buttonResposta1 = resposta1;
@@ -83,13 +102,14 @@ public class Questao
         buttonResposta3 = resposta3;
         buttonResposta4 = resposta4;
         buttonResposta5 = resposta5;
+        componenteImagem = imagem;
     }
 
     public Questao()
     {
     }
 
-    public Questao(Label pergunta, Button resposta1, Button resposta2, Button resposta3, Button resposta4, Button resposta5)
+    public Questao(Label pergunta, Button resposta1, Button resposta2, Button resposta3, Button resposta4, Button resposta5, Image imagem)
     {
         labelPergunta = pergunta;
         buttonResposta1 = resposta1;
@@ -97,6 +117,7 @@ public class Questao
         buttonResposta3 = resposta3;
         buttonResposta4 = resposta4;
         buttonResposta5 = resposta5;
+        componenteImagem = imagem;
     }
 
 }
