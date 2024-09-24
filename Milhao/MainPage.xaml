@@ -8,7 +8,8 @@
         <Grid RowSpacing="10">
         <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="70"/>
                 <RowDefinition Height="300"/>
                 <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
@@ -22,9 +23,33 @@
                 Padding="5,10,5,0"
                 HorizontalTextAlignment="Center"
                 BackgroundColor="#2d938e"
-                Grid.Row="1"/>
+                Grid.Row="2"/>
 
-        <Grid Grid.Row="2" RowSpacing="5">
+        <Grid Grid.Row="1" ColumnSpacing="5">
+        <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label x:Name="labelPontuacao"
+                Text="Pontuação:"
+                TextColor="#abee93"
+                Padding="5,10,5,0"
+                HorizontalTextAlignment="Center"
+                BackgroundColor="#2d938e"
+                Grid.Column="0"/>
+
+        <Label x:Name="labelNivel"
+                Text="Nivel:"
+                TextColor="#abee93"
+                Padding="5,10,5,0"
+                HorizontalTextAlignment="Center"
+                BackgroundColor="#2d938e"
+                Grid.Column="1"/>
+
+        </Grid>
+
+        <Grid Grid.Row="3" RowSpacing="5">
         <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -70,7 +95,7 @@
 
         </Grid>
 
-        <Grid Grid.Row="3" ColumnSpacing="5">
+        <Grid Grid.Row="4" ColumnSpacing="5">
         <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>

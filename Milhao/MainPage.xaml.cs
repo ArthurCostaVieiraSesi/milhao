@@ -7,8 +7,7 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-		gerenciador = new Gerenciador(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, Img);
-		gerenciador.ProximaPergunta();
+		gerenciador = new Gerenciador(labelPergunta, labelPontuacao, labelNivel, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, Img);
 	}
 
 	void Clicked01(object sender, EventArgs e)

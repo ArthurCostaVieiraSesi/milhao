@@ -6,11 +6,16 @@ public class Gerenciador
     List<Questao> ListaQuestoes = new List<Questao>();
     List<int> ListaQuestoesRespondidas = new List<int>();
     Questao questaoCorrente;
+    Label labelPontuacao;
+    Label labelNivel;
 
-    public Gerenciador(Label labelPergunta, Button buttonResposta1, Button buttonResposta2, Button buttonResposta3, Button buttonResposta4, Button buttonResposta5, Image compImg)
+    public Gerenciador(Label labelPergunta, Label labelPont, Label labelNivel, Button buttonResposta1, Button buttonResposta2, Button buttonResposta3, Button buttonResposta4, Button buttonResposta5, Image compImg)
     {
         CriarQuestoes(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        labelPontuacao = labelPont;
+        this.labelNivel = labelNivel;
     }
+    
 
     public void ProximaPergunta()
     {
@@ -54,10 +59,12 @@ public class Gerenciador
             AdicionaPontuacao(NivelAtual);
             NivelAtual++;
             ProximaPergunta();
+            labelPontuacao.Text = "Pontuação: R$" + Pontuacao.ToString();
+            labelNivel.Text = "Nivel:" + NivelAtual.ToString();
         }
         else
         {
-            await App.Current.MainPage.DisplayAlert("Burro", "Você errou, é facil desacreditar de você, dificil é acreditar que você consegue! Aqui, é só regresso! ;)", "Ok");
+            await App.Current.MainPage.DisplayAlert("Burro", "Você errou, é facil falar mal de você, dificil é acreditar que você consegue! Aqui, é só regresso! ;)", "Ok");
             Inicializar();
         }
     }
@@ -68,6 +75,8 @@ public class Gerenciador
 
     void Inicializar()
     {
+        labelPontuacao.Text = "Pontuação: R$" + Pontuacao.ToString();
+        labelNivel.Text = "Nivel:" + NivelAtual.ToString();
         Pontuacao = 0;
         NivelAtual = 0;
         ProximaPergunta();
@@ -82,7 +91,7 @@ public class Gerenciador
         Q1.resposta3 = "Powder";
         Q1.resposta4 = "Paola";
         Q1.resposta5 = "Nenhum, sempre foi Jinx";
-        Q1.imagem = "logo.jpg";
+        Q1.imagem = "logo.png";
         Q1.nivel = 1;
         Q1.respostacerta = 3;
         Q1.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -96,7 +105,7 @@ public class Gerenciador
         Q2.resposta3 = "Volibear";
         Q2.resposta4 = "Warwick";
         Q2.resposta5 = "Renekton";
-        Q2.imagem = "logo.jpg";
+        Q2.imagem = "logo.png";
         Q2.nivel = 1;
         Q2.respostacerta = 4;
         Q2.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -109,7 +118,7 @@ public class Gerenciador
         Q3.resposta3 = "Khada Jhin";
         Q3.resposta4 = "Govos";
         Q3.resposta5 = "Nenhum, ele sempre foi Zed";
-        Q3.imagem = "logo.jpg";
+        Q3.imagem = "logo.png";
         Q3.nivel = 1;
         Q3.respostacerta = 3;
         Q3.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -122,7 +131,7 @@ public class Gerenciador
         Q4.resposta3 = "Veigar";
         Q4.resposta4 = "Nami";
         Q4.resposta5 = "Thresh";
-        Q4.imagem = "logo.jpg";
+        Q4.imagem = "logo.png";
         Q4.nivel = 1;
         Q4.respostacerta = 3;
         Q4.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -135,7 +144,7 @@ public class Gerenciador
         Q5.resposta3 = "Mordekaiser";
         Q5.resposta4 = "Aatrox";
         Q5.resposta5 = "Sion";
-        Q5.imagem = "logo.jpg";
+        Q5.imagem = "logo.png";
         Q5.nivel = 1;
         Q5.respostacerta = 1;
         Q5.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -148,7 +157,7 @@ public class Gerenciador
         Q6.resposta3 = "Corki";
         Q6.resposta4 = "Heimerdinger";
         Q6.resposta5 = "Veigar";
-        Q6.imagem = "logo.jpg";
+        Q6.imagem = "logo.png";
         Q6.nivel = 1;
         Q6.respostacerta = 4;
         Q6.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -161,7 +170,7 @@ public class Gerenciador
         Q7.resposta3 = "Jinx";
         Q7.resposta4 = "Caitlyn";
         Q7.resposta5 = "Ashe";
-        Q7.imagem = "logo.jpg";
+        Q7.imagem = "logo.png";
         Q7.nivel = 1;
         Q7.respostacerta = 2;
         Q7.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -174,7 +183,7 @@ public class Gerenciador
         Q8.resposta3 = "Samira";
         Q8.resposta4 = "Riven";
         Q8.resposta5 = "Sylas";
-        Q8.imagem = "logo.jpg";
+        Q8.imagem = "logo.png";
         Q8.nivel = 1;
         Q8.respostacerta = 1;
         Q8.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -187,7 +196,7 @@ public class Gerenciador
         Q9.resposta3 = "Shen";
         Q9.resposta4 = "Yasuo";
         Q9.resposta5 = "Akali";
-        Q9.imagem = "logo.jpg";
+        Q9.imagem = "logo.png";
         Q9.nivel = 1;
         Q9.respostacerta = 1;
         Q9.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -200,7 +209,7 @@ public class Gerenciador
         Q10.resposta3 = "Fiora";
         Q10.resposta4 = "Yasuo";
         Q10.resposta5 = "Aatrox";
-        Q10.imagem = "logo.jpg";
+        Q10.imagem = "logo.png";
         Q10.nivel = 1;
         Q10.respostacerta = 1;
         Q10.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -213,7 +222,7 @@ public class Gerenciador
         Q11.resposta3 = "Xayah";
         Q11.resposta4 = "Ele não tem irmã";
         Q11.resposta5 = "Akali";
-        Q11.imagem = "logo.jpg";
+        Q11.imagem = "logo.png";
         Q11.nivel = 2;
         Q11.respostacerta = 4;
         Q11.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -226,7 +235,7 @@ public class Gerenciador
         Q12.resposta3 = "Pyke";
         Q12.resposta4 = "Viego";
         Q12.resposta5 = "Sylas";
-        Q12.imagem = "logo.jpg";
+        Q12.imagem = "logo.png";
         Q12.nivel = 2;
         Q12.respostacerta = 1;
         Q12.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -239,7 +248,7 @@ public class Gerenciador
         Q13.resposta3 = "Braum";
         Q13.resposta4 = "Jinx";
         Q13.resposta5 = "Senna";
-        Q13.imagem = "logo.jpg";
+        Q13.imagem = "logo.png";
         Q13.nivel = 2;
         Q13.respostacerta = 1;
         Q13.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -252,7 +261,7 @@ public class Gerenciador
         Q14.resposta3 = "Galio";
         Q14.resposta4 = "Braum";
         Q14.resposta5 = "Nasus";
-        Q14.imagem = "logo.jpg";
+        Q14.imagem = "logo.png";
         Q14.nivel = 2;
         Q14.respostacerta = 2;
         Q14.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -265,7 +274,7 @@ public class Gerenciador
         Q15.resposta3 = "Akali";
         Q15.resposta4 = "Kai'Sa";
         Q15.resposta5 = "Todas as anteriores";
-        Q15.imagem = "logo.jpg";
+        Q15.imagem = "logo.png";
         Q15.nivel = 2;
         Q15.respostacerta = 5;
         Q15.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -278,7 +287,7 @@ public class Gerenciador
         Q16.resposta3 = "Aatrox";
         Q16.resposta4 = "Ornn";
         Q16.resposta5 = "Nasus";
-        Q16.imagem = "logo.jpg";
+        Q16.imagem = "logo.png";
         Q16.nivel = 2;
         Q16.respostacerta = 3;
         Q16.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -291,7 +300,7 @@ public class Gerenciador
         Q17.resposta3 = "Braum";
         Q17.resposta4 = "Shyvana";
         Q17.resposta5 = "Gnar";
-        Q17.imagem = "logo.jpg";
+        Q17.imagem = "logo.png";
         Q17.nivel = 2;
         Q17.respostacerta = 1;
         Q17.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -304,7 +313,7 @@ public class Gerenciador
         Q18.resposta3 = "Dr. Mundo";
         Q18.resposta4 = "Zac";
         Q18.resposta5 = "Sion";
-        Q18.imagem = "logo.jpg";
+        Q18.imagem = "logo.png";
         Q18.nivel = 2;
         Q18.respostacerta = 1;
         Q18.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -317,7 +326,7 @@ public class Gerenciador
         Q19.resposta3 = "Lissandra";
         Q19.resposta4 = "Tryndamere";
         Q19.resposta5 = "Todas as anteriores";
-        Q19.imagem = "logo.jpg";
+        Q19.imagem = "logo.png";
         Q19.nivel = 2;
         Q19.respostacerta = 5;
         Q19.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -330,7 +339,7 @@ public class Gerenciador
         Q20.resposta3 = "Swain";
         Q20.resposta4 = "Talon";
         Q20.resposta5 = "Riven";
-        Q20.imagem = "logo.jpg";
+        Q20.imagem = "logo.png";
         Q20.nivel = 2;
         Q20.respostacerta = 1;
         Q20.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
@@ -726,7 +735,657 @@ public class Gerenciador
         Q50.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
         ListaQuestoes.Add(Q50);
 
+        var Q51 = new Questao();
+        Q51.pergunta = "Qual campeão é conhecido como 'O Defensor de Demacia'?";
+        Q51.resposta1 = "Garen";
+        Q51.resposta2 = "Jarvan IV";
+        Q51.resposta3 = "Lux";
+        Q51.resposta4 = "Fiora";
+        Q51.resposta5 = "Sylas";
+        Q51.imagem = "logo.png";
+        Q51.respostacerta = 1;
+        Q51.nivel = 6;
+        Q51.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q51);
 
+        var Q52 = new Questao();
+        Q52.pergunta = "Qual campeão tem a habilidade suprema 'Destinizar'?";
+        Q52.resposta1 = "Twisted Fate";
+        Q52.resposta2 = "Kassadin";
+        Q52.resposta3 = "Ryze";
+        Q52.resposta4 = "Ekko";
+        Q52.resposta5 = "Zilean";
+        Q52.imagem = "logo.png";
+        Q52.respostacerta = 1;
+        Q52.nivel = 6;
+        Q52.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q52);
+
+        var Q53 = new Questao();
+        Q53.pergunta = "Qual desses campeões usa uma espada como arma principal?";
+        Q53.resposta1 = "Yasuo";
+        Q53.resposta2 = "Riven";
+        Q53.resposta3 = "Fiora";
+        Q53.resposta4 = "Aatrox";
+        Q53.resposta5 = "Todos os anteriores";
+        Q53.imagem = "logo.png";
+        Q53.respostacerta = 5;
+        Q53.nivel = 6;
+        Q53.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q53);
+
+        var Q54 = new Questao();
+        Q54.pergunta = "Qual campeão é a representação física de uma tormenta?";
+        Q54.resposta1 = "Ziggs";
+        Q54.resposta2 = "Janna";
+        Q54.resposta3 = "Kennen";
+        Q54.resposta4 = "Zed";
+        Q54.resposta5 = "Volibear";
+        Q54.imagem = "logo.png";
+        Q54.respostacerta = 5;
+        Q54.nivel = 6;
+        Q54.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q54);
+
+        var Q55 = new Questao();
+        Q55.pergunta = "Qual é a habilidade suprema de Karthus?";
+        Q55.resposta1 = "Paredão da Dor";
+        Q55.resposta2 = "Definhamento";
+        Q55.resposta3 = "Requiém";
+        Q55.resposta4 = "Desafio Ardente";
+        Q55.resposta5 = "Lamento";
+        Q55.imagem = "logo.png";
+        Q55.respostacerta = 3;
+        Q55.nivel = 6;
+        Q55.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q55);
+
+        var Q56 = new Questao();
+        Q56.pergunta = "Qual campeão pode criar uma 'Força Incontrolável'?";
+        Q56.resposta1 = "Malphite";
+        Q56.resposta2 = "Orianna";
+        Q56.resposta3 = "Rammus";
+        Q56.resposta4 = "Vi";
+        Q56.resposta5 = "Sion";
+        Q56.imagem = "logo.png";
+        Q56.respostacerta = 5;
+        Q56.nivel = 6;
+        Q56.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q56);
+
+        var Q57 = new Questao();
+        Q57.pergunta = "Qual desses campeões é conhecido por ser um caçador das selvas?";
+        Q57.resposta1 = "Warwick";
+        Q57.resposta2 = "Rengar";
+        Q57.resposta3 = "Kindred";
+        Q57.resposta4 = "Graves";
+        Q57.resposta5 = "Todos os anteriores";
+        Q57.imagem = "logo.png";
+        Q57.respostacerta = 2;
+        Q57.nivel = 6;
+        Q57.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q57);
+
+        var Q58 = new Questao();
+        Q58.pergunta = "Qual campeão pode voar com um dragão?";
+        Q58.resposta1 = "Shyvana";
+        Q58.resposta2 = "Aurelion Sol";
+        Q58.resposta3 = "Swain";
+        Q58.resposta4 = "Pantheon";
+        Q58.resposta5 = "Kled";
+        Q58.imagem = "logo.png";
+        Q58.respostacerta = 2;
+        Q58.nivel = 6;
+        Q58.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q58);
+
+        var Q59 = new Questao();
+        Q59.pergunta = "Qual campeão pode capturar almas inimigas como parte de sua passiva?";
+        Q59.resposta1 = "Thresh";
+        Q59.resposta2 = "Kalista";
+        Q59.resposta3 = "Mordekaiser";
+        Q59.resposta4 = "Pyke";
+        Q59.resposta5 = "Viego";
+        Q59.imagem = "logo.png";
+        Q59.respostacerta = 1;
+        Q59.nivel = 6;
+        Q59.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q59);
+
+        var Q60 = new Questao();
+        Q60.pergunta = "Qual campeão é conhecido como o 'Aruaceiro de Aguas de Sentina'?";
+        Q60.resposta1 = "Gangplank";
+        Q60.resposta2 = "Twisted Fate";
+        Q60.resposta3 = "Pyke";
+        Q60.resposta4 = "Miss Fortune";
+        Q60.resposta5 = "Illaoi";
+        Q60.imagem = "logo.png";
+        Q60.respostacerta = 1;
+        Q60.nivel = 6;
+        Q60.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q60);
+
+        var Q61 = new Questao();
+        Q61.pergunta = "Qual campeão tem a habilidade passiva 'Anime-se!'?";
+        Q61.resposta1 = "Jinx";
+        Q61.resposta2 = "Hecarim";
+        Q61.resposta3 = "Zilean";
+        Q61.resposta4 = "Rammus";
+        Q61.resposta5 = "Draven";
+        Q61.imagem = "logo.png";
+        Q61.respostacerta = 1;
+        Q61.nivel = 7;
+        Q61.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q61);
+
+        var Q62 = new Questao();
+        Q62.pergunta = "Qual desses campeões tem uma habilidade chamada 'Parede de Vento'?";
+        Q62.resposta1 = "Janna";
+        Q62.resposta2 = "Yasuo";
+        Q62.resposta3 = "Rakan";
+        Q62.resposta4 = "Ornn";
+        Q62.resposta5 = "Braum";
+        Q62.imagem = "logo.png";
+        Q62.respostacerta = 2;
+        Q62.nivel = 7;
+        Q62.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q62);
+
+        var Q63 = new Questao();
+        Q63.pergunta = "Qual desses campeões é conhecido por carregar uma lâmina mágica?";
+        Q63.resposta1 = "Riven";
+        Q63.resposta2 = "Kayle";
+        Q63.resposta3 = "Aatrox";
+        Q63.resposta4 = "Tryndamere";
+        Q63.resposta5 = "Fiora";
+        Q63.imagem = "logo.png";
+        Q63.respostacerta = 1;
+        Q63.nivel = 7;
+        Q63.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q63);
+
+        var Q64 = new Questao();
+        Q64.pergunta = "Qual desses campeões é conhecido por sua habilidade de regeneração rápida?";
+        Q64.resposta1 = "Dr. Mundo";
+        Q64.resposta2 = "Warwick";
+        Q64.resposta3 = "Briar";
+        Q64.resposta4 = "Garen";
+        Q64.resposta5 = "Todos os anteriores";
+        Q64.imagem = "logo.png";
+        Q64.respostacerta = 5;
+        Q64.nivel = 7;
+        Q64.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q64);
+
+        var Q65 = new Questao();
+        Q65.pergunta = "Qual campeão possui a passiva 'Ataque Duplo'?";
+        Q65.resposta1 = "Lee Sin";
+        Q65.resposta2 = "Riven";
+        Q65.resposta3 = "Xin Zhao";
+        Q65.resposta4 = "Master Yi";
+        Q65.resposta5 = "Jax";
+        Q65.imagem = "logo.png";
+        Q65.respostacerta = 4;
+        Q65.nivel = 7;
+        Q65.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q65);
+
+        var Q66 = new Questao();
+        Q66.pergunta = "Qual campeão é conhecido como o 'Caçador Orgulhoso'?";
+        Q66.resposta1 = "Rengar";
+        Q66.resposta2 = "Kha'Zix";
+        Q66.resposta3 = "Graves";
+        Q66.resposta4 = "Twitch";
+        Q66.resposta5 = "Nocturne";
+        Q66.imagem = "logo.png";
+        Q66.respostacerta = 1;
+        Q66.nivel = 7;
+        Q66.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q66);
+
+        var Q67 = new Questao();
+        Q67.pergunta = "Qual desses campeões utiliza uma âncora como arma?";
+        Q67.resposta1 = "Gangplank";
+        Q67.resposta2 = "Thresh";
+        Q67.resposta3 = "Nautilus";
+        Q67.resposta4 = "Pyke";
+        Q67.resposta5 = "Maokai";
+        Q67.imagem = "logo.png";
+        Q67.respostacerta = 3;
+        Q67.nivel = 7;
+        Q67.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q67);
+
+        var Q68 = new Questao();
+        Q68.pergunta = "Qual campeão tem a habilidade 'Espinho de odio'?";
+        Q68.resposta1 = "Zed";
+        Q68.resposta2 = "Evelynn";
+        Q68.resposta3 = "Akali";
+        Q68.resposta4 = "Vex";
+        Q68.resposta5 = "Morgana";
+        Q68.imagem = "logo.png";
+        Q68.respostacerta = 2;
+        Q68.nivel = 7;
+        Q68.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q68);
+
+        var Q69 = new Questao();
+        Q69.pergunta = "Qual desses campeões é considerado um 'Anjo Caído'?";
+        Q69.resposta1 = "Kayle";
+        Q69.resposta2 = "Morgana";
+        Q69.resposta3 = "Soraka";
+        Q69.resposta4 = "Aatrox";
+        Q69.resposta5 = "Zyra";
+        Q69.imagem = "logo.png";
+        Q69.respostacerta = 2;
+        Q69.nivel = 7;
+        Q69.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q69);
+
+        var Q70 = new Questao();
+        Q70.pergunta = "Qual é a cidade natal de Ekko?";
+        Q70.resposta1 = "Piltover";
+        Q70.resposta2 = "Zaun";
+        Q70.resposta3 = "Ionia";
+        Q70.resposta4 = "Noxus";
+        Q70.resposta5 = "Demacia";
+        Q70.imagem = "logo.png";
+        Q70.respostacerta = 2;
+        Q70.nivel = 7;
+        Q70.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q70);
+
+        var Q71 = new Questao();
+        Q71.pergunta = "Qual campeão é conhecido como 'O Exterminador de Tanques'?";
+        Q71.resposta1 = "Kog'Maw";
+        Q71.resposta2 = "Vayne";
+        Q71.resposta3 = "Camille";
+        Q71.resposta4 = "Illaoi";
+        Q71.resposta5 = "Tahm Kench";
+        Q71.imagem = "logo.png";
+        Q71.respostacerta = 2;
+        Q71.nivel = 8;
+        Q71.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q71);
+
+        var Q72 = new Questao();
+        Q72.pergunta = "Qual campeão utiliza o veneno como principal ferramenta de combate?";
+        Q72.resposta1 = "Singed";
+        Q72.resposta2 = "Twitch";
+        Q72.resposta3 = "Cassiopeia";
+        Q72.resposta4 = "Teemo";
+        Q72.resposta5 = "Todos os anteriores";
+        Q72.imagem = "logo.png";
+        Q72.respostacerta = 5;
+        Q72.nivel = 8;
+        Q72.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q72);
+
+        var Q73 = new Questao();
+        Q73.pergunta = "Qual desses campeões NÃO pertence ao grupo 'As Sentinelas da Luz'?";
+        Q73.resposta1 = "Viego";
+        Q73.resposta2 = "Senna";
+        Q73.resposta3 = "Lucian";
+        Q73.resposta4 = "Graves";
+        Q73.resposta5 = "Vayne";
+        Q73.imagem = "logo.png";
+        Q73.respostacerta = 1;
+        Q73.nivel = 8;
+        Q73.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q73);
+
+        var Q74 = new Questao();
+        Q74.pergunta = "Qual campeão é conhecido por sua habilidade de se transformar em um dragão?";
+        Q74.resposta1 = "Shyvana";
+        Q74.resposta2 = "Aurelion Sol";
+        Q74.resposta3 = "Swain";
+        Q74.resposta4 = "Mordekaiser";
+        Q74.resposta5 = "Pantheon";
+        Q74.imagem = "logo.png";
+        Q74.respostacerta = 1;
+        Q74.nivel = 8;
+        Q74.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q74);
+
+        var Q75 = new Questao();
+        Q75.pergunta = "Qual campeão tem a habilidade 'Surto Elétrico'?";
+        Q75.resposta1 = "Zed";
+        Q75.resposta2 = "Kennen";
+        Q75.resposta3 = "Janna";
+        Q75.resposta4 = "Yasuo";
+        Q75.resposta5 = "Volibear";
+        Q75.imagem = "logo.png";
+        Q75.respostacerta = 2;
+        Q75.nivel = 8;
+        Q75.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q75);
+
+        var Q76 = new Questao();
+        Q76.pergunta = "Qual campeão é conhecido como 'O Monstro de Zaun'?";
+        Q76.resposta1 = "Singed";
+        Q76.resposta2 = "Twitch";
+        Q76.resposta3 = "Warwick";
+        Q76.resposta4 = "Dr. Mundo";
+        Q76.resposta5 = "Urgot";
+        Q76.imagem = "logo.png";
+        Q76.respostacerta = 3;
+        Q76.nivel = 8;
+        Q76.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q76);
+
+        var Q77 = new Questao();
+        Q77.pergunta = "Qual desses campeões é famoso por sua habilidade de controlar a mente de inimigos?";
+        Q77.resposta1 = "Malzahar";
+        Q77.resposta2 = "Lissandra";
+        Q77.resposta3 = "Syndra";
+        Q77.resposta4 = "LeBlanc";
+        Q77.resposta5 = "Nenhum";
+        Q77.imagem = "logo.png";
+        Q77.respostacerta = 4;
+        Q77.nivel = 8;
+        Q77.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q77);
+
+        var Q78 = new Questao();
+        Q78.pergunta = "Qual campeão utiliza cogumelos como armadilha?";
+        Q78.resposta1 = "Teemo";
+        Q78.resposta2 = "Twitch";
+        Q78.resposta3 = "Ziggs";
+        Q78.resposta4 = "Jhin";
+        Q78.resposta5 = "Heimerdinger";
+        Q78.imagem = "logo.png";
+        Q78.respostacerta = 1;
+        Q78.nivel = 8;
+        Q78.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q78);
+
+        var Q79 = new Questao();
+        Q79.pergunta = "Qual campeão fica imortal sob sua 'Forma Suprema'?";
+        Q79.resposta1 = "Warwick";
+        Q79.resposta2 = "Kindred";
+        Q79.resposta3 = "Lillia";
+        Q79.resposta4 = "Nasus";
+        Q79.resposta5 = "Volibear";
+        Q79.imagem = "logo.png";
+        Q79.respostacerta = 2;
+        Q79.nivel = 9;
+        Q79.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q79);
+
+        var Q80 = new Questao();
+        Q80.pergunta = "Qual campeão é conhecido como o 'Deus do Trovão'?";
+        Q80.resposta1 = "Zilean";
+        Q80.resposta2 = "Volibear";
+        Q80.resposta3 = "Ornn";
+        Q80.resposta4 = "Pantheon";
+        Q80.resposta5 = "Aatrox";
+        Q80.imagem = "logo.png";
+        Q80.respostacerta = 2;
+        Q80.nivel = 9;
+        Q80.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q80);
+
+        var Q81 = new Questao();
+        Q81.pergunta = "Qual campeão utiliza portais para se teletransportar e mover aliados?";
+        Q81.resposta1 = "Bardo";
+        Q81.resposta2 = "Thresh";
+        Q81.resposta3 = "Rakan";
+        Q81.resposta4 = "Yuumi";
+        Q81.resposta5 = "Zoe";
+        Q81.imagem = "logo.png";
+        Q81.respostacerta = 1;
+        Q81.nivel = 9;
+        Q81.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q81);
+
+        var Q82 = new Questao();
+        Q82.pergunta = "Qual campeão possui a habilidade de 'Correntes Etéreas'?";
+        Q82.resposta1 = "LeBlanc";
+        Q82.resposta2 = "Morgana";
+        Q82.resposta3 = "Lissandra";
+        Q82.resposta4 = "Lux";
+        Q82.resposta5 = "Karma";
+        Q82.imagem = "logo.png";
+        Q82.respostacerta = 1;
+        Q82.nivel = 9;
+        Q82.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q82);
+
+        var Q83 = new Questao();
+        Q83.pergunta = "Qual campeão tentou ressucitar sua esposa falecida?";
+        Q83.resposta1 = "Viego";
+        Q83.resposta2 = "Lucian";
+        Q83.resposta3 = "Thresh";
+        Q83.resposta4 = "Hecarim";
+        Q83.resposta5 = "Kalista";
+        Q83.imagem = "logo.png";
+        Q83.respostacerta = 1;
+        Q83.nivel = 9;
+        Q83.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q83);
+
+        var Q84 = new Questao();
+        Q84.pergunta = "Qual campeão é famoso por sua habilidade de se clonar e enganar os inimigos?";
+        Q84.resposta1 = "LeBlanc";
+        Q84.resposta2 = "Shaco";
+        Q84.resposta3 = "Neeko";
+        Q84.resposta4 = "Wukong";
+        Q84.resposta5 = "Todos os anteriores";
+        Q84.imagem = "logo.png";
+        Q84.respostacerta = 5;
+        Q84.nivel = 9;
+        Q84.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q84);
+
+        var Q85 = new Questao();
+        Q85.pergunta = "Qual campeão tem a habilidade de prender inimigos em uma prisão de energia?";
+        Q85.resposta1 = "Lux";
+        Q85.resposta2 = "Morgana";
+        Q85.resposta3 = "Veigar";
+        Q85.resposta4 = "Xerath";
+        Q85.resposta5 = "Syndra";
+        Q85.imagem = "logo.png";
+        Q85.respostacerta = 3;
+        Q85.nivel = 9;
+        Q85.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q85);
+
+        var Q86 = new Questao();
+        Q86.pergunta = "Qual campeão é um andarilho espiritual de Ionia?";
+        Q86.resposta1 = "Karma";
+        Q86.resposta2 = "Yone";
+        Q86.resposta3 = "Shen";
+        Q86.resposta4 = "Soraka";
+        Q86.resposta5 = "Master Yi";
+        Q86.imagem = "logo.png";
+        Q86.respostacerta = 2;
+        Q86.nivel = 10;
+        Q86.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q86);
+
+        var Q87 = new Questao();
+        Q87.pergunta = "Qual campeão é conhecido como o 'Coração de Freljord'?";
+        Q87.resposta1 = "Ashe";
+        Q87.resposta2 = "Braum";
+        Q87.resposta3 = "Sejuani";
+        Q87.resposta4 = "Tryndamere";
+        Q87.resposta5 = "Lissandra";
+        Q87.imagem = "logo.png";
+        Q87.respostacerta = 2;
+        Q87.nivel = 10;
+        Q87.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q87);
+
+        var Q88 = new Questao();
+        Q88.pergunta = "Qual desses campeões pode criar portais para outras dimensões?";
+        Q88.resposta1 = "Zoe";
+        Q88.resposta2 = "Tahm Kench";
+        Q88.resposta3 = "Bard";
+        Q88.resposta4 = "Ekko";
+        Q88.resposta5 = "Lissandra";
+        Q88.imagem = "logo.png";
+        Q88.respostacerta = 1;
+        Q88.nivel = 10;
+        Q88.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q88);
+
+        var Q89 = new Questao();
+        Q89.pergunta = "Qual campeão é famoso por suas lâminas dançantes?";
+        Q89.resposta1 = "Talon";
+        Q89.resposta2 = "Irelia";
+        Q89.resposta3 = "Riven";
+        Q89.resposta4 = "Yasuo";
+        Q89.resposta5 = "Fiora";
+        Q89.imagem = "logo.png";
+        Q89.respostacerta = 2;
+        Q89.nivel = 10;
+        Q89.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q89);
+
+        var Q90 = new Questao();
+        Q90.pergunta = "Qual campeão é o irmão de Darius?";
+        Q90.resposta1 = "Draven";
+        Q90.resposta2 = "Swain";
+        Q90.resposta3 = "Jarvan IV";
+        Q90.resposta4 = "Garen";
+        Q90.resposta5 = "Kled";
+        Q90.imagem = "logo.png";
+        Q90.respostacerta = 1;
+        Q90.nivel = 10;
+        Q90.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q90);
+
+        var Q91 = new Questao();
+        Q91.pergunta = "Qual campeão tem um poro mordomo?";
+        Q91.resposta1 = "Jayce";
+        Q91.resposta2 = "Caitlyn";
+        Q91.resposta3 = "Jinx";
+        Q91.resposta4 = "Viktor";
+        Q91.resposta5 = "Heimerdinger";
+        Q91.imagem = "logo.png";
+        Q91.respostacerta = 5;
+        Q91.nivel = 10;
+        Q91.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q91);
+
+        var Q92 = new Questao();
+        Q92.pergunta = "Qual campeão é conhecido como 'A Vingança Reencarnada'?";
+        Q92.resposta1 = "Kalista";
+        Q92.resposta2 = "Mordekaiser";
+        Q92.resposta3 = "Sion";
+        Q92.resposta4 = "Hecarim";
+        Q92.resposta5 = "Karthus";
+        Q92.imagem = "logo.png";
+        Q92.respostacerta = 1;
+        Q92.nivel = 10;
+        Q92.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q92);
+
+        var Q93 = new Questao();
+        Q93.pergunta = "Qual campeão é especialista em atravessar paredes?";
+        Q93.resposta1 = "Kayn";
+        Q93.resposta2 = "Talon";
+        Q93.resposta3 = "Zed";
+        Q93.resposta4 = "Ekko";
+        Q93.resposta5 = "Kassadin";
+        Q93.imagem = "logo.png";
+        Q93.respostacerta = 1;
+        Q93.nivel = 10;
+        Q93.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q93);
+
+        var Q94 = new Questao();
+        Q94.pergunta = "Qual campeão tem habilidades relacionadas com corvos?";
+        Q94.resposta1 = "Swain";
+        Q94.resposta2 = "Fiddlesticks";
+        Q94.resposta3 = "Nocturne";
+        Q94.resposta4 = "Shaco";
+        Q94.resposta5 = "Zyra";
+        Q94.imagem = "logo.png";
+        Q94.respostacerta = 1;
+        Q94.nivel = 10;
+        Q94.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q94);
+
+        var Q95 = new Questao();
+        Q95.pergunta = "Qual campeão é conhecido por ser uma arma viva?";
+        Q95.resposta1 = "Rengar";
+        Q95.resposta2 = "Jhin";
+        Q95.resposta3 = "Kha'Zix";
+        Q95.resposta4 = "Jinx";
+        Q95.resposta5 = "Kai'Sa";
+        Q95.imagem = "logo.png";
+        Q95.respostacerta = 5;
+        Q95.nivel = 10;
+        Q95.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q95);
+
+        var Q96 = new Questao();
+        Q96.pergunta = "Qual campeão tem uma habilidade chamada 'Constelação Cadente'?";
+        Q96.resposta1 = "Pantheon";
+        Q96.resposta2 = "Riven";
+        Q96.resposta3 = "Aatrox";
+        Q96.resposta4 = "Sion";
+        Q96.resposta5 = "Jarvan IV";
+        Q96.imagem = "logo.png";
+        Q96.respostacerta = 1;
+        Q96.nivel = 10;
+        Q96.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q96);
+
+        var Q97 = new Questao();
+        Q97.pergunta = "Qual campeão é um vastaya de 9 caudas?";
+        Q97.resposta1 = "Rakan";
+        Q97.resposta2 = "Xayah";
+        Q97.resposta3 = "Yasuo";
+        Q97.resposta4 = "Kayn";
+        Q97.resposta5 = "Ahri";
+        Q97.imagem = "logo.png";
+        Q97.respostacerta = 5;
+        Q97.nivel = 10;
+        Q97.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q97);
+
+        var Q98 = new Questao();
+        Q98.pergunta = "Qual campeão tem uma habilidade de regeneração extremamente rápida após sofrer ferimentos graves?";
+        Q98.resposta1 = "Garen";
+        Q98.resposta2 = "Warwick";
+        Q98.resposta3 = "Tryndamere";
+        Q98.resposta4 = "Vladimir";
+        Q98.resposta5 = "Mundo";
+        Q98.imagem = "logo.png";
+        Q98.respostacerta = 3;
+        Q98.nivel = 10;
+        Q98.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q98);
+
+        var Q99 = new Questao();
+        Q99.pergunta = "Qual campeão é conhecido como o 'Terror das Areias'?";
+        Q99.resposta1 = "Sivir";
+        Q99.resposta2 = "Nasus";
+        Q99.resposta3 = "Renekton";
+        Q99.resposta4 = "Xerath";
+        Q99.resposta5 = "Azir";
+        Q99.imagem = "logo.png";
+        Q99.respostacerta = 2;
+        Q99.nivel = 10;
+        Q99.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q99);
+
+        var Q100 = new Questao();
+        Q100.pergunta = "Qual campeão é famoso por sua habilidade de criar globos de neve?";
+        Q100.resposta1 = "Nunu e Willump";
+        Q100.resposta2 = "Braum";
+        Q100.resposta3 = "Lissandra";
+        Q100.resposta4 = "Anivia";
+        Q100.resposta5 = "Sejuani";
+        Q100.imagem = "logo.png";
+        Q100.respostacerta = 1;
+        Q100.nivel = 10;
+        Q100.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
+        ListaQuestoes.Add(Q100);
+
+        ProximaPergunta();
     }
 
 }
