@@ -3,8 +3,8 @@ namespace Milhao;
 public class Gerenciador
 {
 
-    List<Questao> ListaQuestoes = new List<Questao>();
-    List<int> ListaQuestoesRespondidas = new List<int>();
+    List<Questao> ListaTodasQuestoes = new List<Questao>();
+    List<Questao> ListaTodasQuestoesRespondidas = new List<Questao>();
     Questao questaoCorrente;
     Label labelPontuacao;
     Label labelNivel;
@@ -19,11 +19,19 @@ public class Gerenciador
 
     public void ProximaPergunta()
     {
+        var ListaQuestoes = ListaTodasQuestoes.Where(d => d.nivel == NivelAtual).ToList();
         var numRandomico = Random.Shared.Next(0, ListaQuestoes.Count - 1);
-        while (ListaQuestoesRespondidas.Contains(numRandomico))
-            numRandomico = Random.Shared.Next(0, ListaQuestoes.Count - 1);
-        ListaQuestoesRespondidas.Add(numRandomico);
+
         questaoCorrente = ListaQuestoes[numRandomico];
+
+        while (ListaTodasQuestoesRespondidas.Contains(questaoCorrente))
+        {
+            numRandomico = Random.Shared.Next(0, ListaQuestoes.Count - 1);
+            questaoCorrente = ListaQuestoes[numRandomico];
+        }
+
+        ListaTodasQuestoesRespondidas.Add(questaoCorrente);
+        
         questaoCorrente.Desenhar();
     }
 
@@ -61,6 +69,12 @@ public class Gerenciador
             ProximaPergunta();
             labelPontuacao.Text = "Pontuação: R$" + Pontuacao.ToString();
             labelNivel.Text = "Nivel:" + NivelAtual.ToString();
+
+            if(NivelAtual == 10)
+            {
+                Application.Current.MainPage = new VitoriaPage();
+            }
+
         }
         else
         {
@@ -71,14 +85,15 @@ public class Gerenciador
 
     public int Pontuacao { get; private set; }
 
-    int NivelAtual = 0;
+    int NivelAtual = 1;
 
     void Inicializar()
     {
         labelPontuacao.Text = "Pontuação: R$" + Pontuacao.ToString();
         labelNivel.Text = "Nivel:" + NivelAtual.ToString();
         Pontuacao = 0;
-        NivelAtual = 0;
+        NivelAtual = 1;
+        ListaTodasQuestoesRespondidas.Clear();
         ProximaPergunta();
     }
 
@@ -96,7 +111,7 @@ public class Gerenciador
         Q1.respostacerta = 3;
         Q1.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
 
-        ListaQuestoes.Add(Q1);
+        ListaTodasQuestoes.Add(Q1);
 
         var Q2 = new Questao();
         Q2.pergunta = "Qual campeão(a) é conhecido(a) como a 'Fera Indomável'?";
@@ -109,7 +124,7 @@ public class Gerenciador
         Q2.nivel = 1;
         Q2.respostacerta = 4;
         Q2.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q2);
+        ListaTodasQuestoes.Add(Q2);
 
         var Q3 = new Questao();
         Q3.pergunta = "Qual o verdadeiro nome de Zed?";
@@ -122,7 +137,7 @@ public class Gerenciador
         Q3.nivel = 1;
         Q3.respostacerta = 3;
         Q3.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q3);
+        ListaTodasQuestoes.Add(Q3);
 
         var Q4 = new Questao();
         Q4.pergunta = "Qual desses campeões não é um suporte?";
@@ -135,7 +150,7 @@ public class Gerenciador
         Q4.nivel = 1;
         Q4.respostacerta = 3;
         Q4.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q4);
+        ListaTodasQuestoes.Add(Q4);
 
         var Q5 = new Questao();
         Q5.pergunta = "Qual campeão é considerado o 'Rei Destruído'?";
@@ -148,7 +163,7 @@ public class Gerenciador
         Q5.nivel = 1;
         Q5.respostacerta = 1;
         Q5.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q5);
+        ListaTodasQuestoes.Add(Q5);
 
         var Q6 = new Questao();
         Q6.pergunta = "Qual campeão é um Yordle cientista?";
@@ -161,7 +176,7 @@ public class Gerenciador
         Q6.nivel = 1;
         Q6.respostacerta = 4;
         Q6.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q6);
+        ListaTodasQuestoes.Add(Q6);
 
         var Q7 = new Questao();
         Q7.pergunta = "Qual desses campeões tem a habilidade chamada 'Chuva de Disparos'?";
@@ -174,7 +189,7 @@ public class Gerenciador
         Q7.nivel = 1;
         Q7.respostacerta = 2;
         Q7.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q7);
+        ListaTodasQuestoes.Add(Q7);
 
         var Q8 = new Questao();
         Q8.pergunta = "Qual é o verdadeiro nome de Miss Fortune?";
@@ -187,7 +202,7 @@ public class Gerenciador
         Q8.nivel = 1;
         Q8.respostacerta = 1;
         Q8.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q8);
+        ListaTodasQuestoes.Add(Q8);
 
         var Q9 = new Questao();
         Q9.pergunta = "Qual é o campeão conhecido como 'A Sombra das Lâminas'?";
@@ -200,7 +215,7 @@ public class Gerenciador
         Q9.nivel = 1;
         Q9.respostacerta = 1;
         Q9.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q9);
+        ListaTodasQuestoes.Add(Q9);
 
         var Q10 = new Questao();
         Q10.pergunta = "Qual desses campeões tem uma habilidade chamada 'Lâminas Vorazes'?";
@@ -213,7 +228,7 @@ public class Gerenciador
         Q10.nivel = 1;
         Q10.respostacerta = 1;
         Q10.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q10);
+        ListaTodasQuestoes.Add(Q10);
 
         var Q11 = new Questao();
         Q11.pergunta = "Qual é o nome da irmã de Kayn?";
@@ -226,7 +241,7 @@ public class Gerenciador
         Q11.nivel = 2;
         Q11.respostacerta = 4;
         Q11.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q11);
+        ListaTodasQuestoes.Add(Q11);
 
         var Q12 = new Questao();
         Q12.pergunta = "Qual desses campeões é uma Sentinela da Luz?";
@@ -239,7 +254,7 @@ public class Gerenciador
         Q12.nivel = 2;
         Q12.respostacerta = 1;
         Q12.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q12);
+        ListaTodasQuestoes.Add(Q12);
 
         var Q13 = new Questao();
         Q13.pergunta = "Qual desses campeões é famoso por usar um arco e flecha?";
@@ -252,7 +267,7 @@ public class Gerenciador
         Q13.nivel = 2;
         Q13.respostacerta = 1;
         Q13.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q13);
+        ListaTodasQuestoes.Add(Q13);
 
         var Q14 = new Questao();
         Q14.pergunta = "Qual desses campeões é um dragão?";
@@ -265,7 +280,7 @@ public class Gerenciador
         Q14.nivel = 2;
         Q14.respostacerta = 2;
         Q14.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q14);
+        ListaTodasQuestoes.Add(Q14);
 
         var Q15 = new Questao();
         Q15.pergunta = "Qual desses campeões pertence ao grupo K/DA?";
@@ -278,7 +293,7 @@ public class Gerenciador
         Q15.nivel = 2;
         Q15.respostacerta = 5;
         Q15.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q15);
+        ListaTodasQuestoes.Add(Q15);
 
         var Q16 = new Questao();
         Q16.pergunta = "Qual campeão é o 'Patrono da Destruição'?";
@@ -291,7 +306,7 @@ public class Gerenciador
         Q16.nivel = 2;
         Q16.respostacerta = 3;
         Q16.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q16);
+        ListaTodasQuestoes.Add(Q16);
 
         var Q17 = new Questao();
         Q17.pergunta = "Qual desses campeões é conhecido como o 'Rei dos Trolls'?";
@@ -304,7 +319,7 @@ public class Gerenciador
         Q17.nivel = 2;
         Q17.respostacerta = 1;
         Q17.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q17);
+        ListaTodasQuestoes.Add(Q17);
 
         var Q18 = new Questao();
         Q18.pergunta = "Qual campeão foi criado por Singed?";
@@ -317,7 +332,7 @@ public class Gerenciador
         Q18.nivel = 2;
         Q18.respostacerta = 1;
         Q18.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q18);
+        ListaTodasQuestoes.Add(Q18);
 
         var Q19 = new Questao();
         Q19.pergunta = "Qual desses campeões é da tribo Freljordiana?";
@@ -330,7 +345,7 @@ public class Gerenciador
         Q19.nivel = 2;
         Q19.respostacerta = 5;
         Q19.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q19);
+        ListaTodasQuestoes.Add(Q19);
 
         var Q20 = new Questao();
         Q20.pergunta = "Qual campeão é conhecido como 'O Azote de Noxus'?";
@@ -343,7 +358,7 @@ public class Gerenciador
         Q20.nivel = 2;
         Q20.respostacerta = 1;
         Q20.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q20);
+        ListaTodasQuestoes.Add(Q20);
 
         var Q21 = new Questao();
         Q21.pergunta = "Qual campeão é o 'Terror das Profundezas'?";
@@ -356,7 +371,7 @@ public class Gerenciador
         Q21.respostacerta = 1;
         Q21.nivel = 3;
         Q21.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q21);
+        ListaTodasQuestoes.Add(Q21);
 
         var Q22 = new Questao();
         Q22.pergunta = "Qual é a habilidade suprema de Yasuo?";
@@ -369,7 +384,7 @@ public class Gerenciador
         Q22.respostacerta = 4;
         Q22.nivel = 3;
         Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q22);
+        ListaTodasQuestoes.Add(Q22);
 
         var Q23 = new Questao();
         Q23.pergunta = "Qual campeão é conhecido como o 'Olho do Crepúsculo'?";
@@ -382,7 +397,7 @@ public class Gerenciador
         Q23.respostacerta = 3;
         Q23.nivel = 3;
         Q23.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q23);
+        ListaTodasQuestoes.Add(Q23);
 
         var Q24 = new Questao();
         Q24.pergunta = "Qual desses campeões tem a habilidade 'Chuva de Canivetes'?";
@@ -395,7 +410,7 @@ public class Gerenciador
         Q24.respostacerta = 2;
         Q24.nivel = 3;
         Q24.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q24);
+        ListaTodasQuestoes.Add(Q24);
 
         var Q25 = new Questao();
         Q25.pergunta = "Qual campeão é conhecido como o 'Devorador de Mundos'?";
@@ -408,7 +423,7 @@ public class Gerenciador
         Q25.respostacerta = 1;
         Q25.nivel = 3;
         Q25.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q25);
+        ListaTodasQuestoes.Add(Q25);
 
         var Q26 = new Questao();
         Q26.pergunta = "Qual desses campeões usa como arma uma corrente com uma foice?";
@@ -421,7 +436,7 @@ public class Gerenciador
         Q26.respostacerta = 1;
         Q26.nivel = 3;
         Q26.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q26);
+        ListaTodasQuestoes.Add(Q26);
 
         var Q27 = new Questao();
         Q27.pergunta = "Qual desses campeões é um assassino especialista em dano explosivo?";
@@ -434,7 +449,7 @@ public class Gerenciador
         Q27.respostacerta = 1;
         Q27.nivel = 3;
         Q27.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q27);
+        ListaTodasQuestoes.Add(Q27);
 
         var Q28 = new Questao();
         Q28.pergunta = "Qual campeão tem a habilidade de se curar ao devorar almas?";
@@ -447,7 +462,7 @@ public class Gerenciador
         Q28.respostacerta = 1;
         Q28.nivel = 3;
         Q28.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q28);
+        ListaTodasQuestoes.Add(Q28);
 
         var Q29 = new Questao();
         Q29.pergunta = "Qual desses campeões tem uma habilidade chamada 'Estandarte de Demacia'?";
@@ -460,7 +475,7 @@ public class Gerenciador
         Q29.respostacerta = 2;
         Q29.nivel = 3;
         Q29.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q29);
+        ListaTodasQuestoes.Add(Q29);
 
         var Q30 = new Questao();
         Q30.pergunta = "Qual campeão é o 'Mestre das Sombras'?";
@@ -473,7 +488,7 @@ public class Gerenciador
         Q30.respostacerta = 3;
         Q30.nivel = 3;
         Q30.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q30);
+        ListaTodasQuestoes.Add(Q30);
 
         var Q31 = new Questao();
         Q31.pergunta = "Qual campeão é o 'Protetor de Ionia'?";
@@ -486,7 +501,7 @@ public class Gerenciador
         Q31.respostacerta = 3;
         Q31.nivel = 4;
         Q31.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q31);
+        ListaTodasQuestoes.Add(Q31);
 
         var Q32 = new Questao();
         Q32.pergunta = "Qual habilidade de Ashe dá visão do mapa?";
@@ -499,7 +514,7 @@ public class Gerenciador
         Q32.respostacerta = 4;
         Q32.nivel = 4;
         Q32.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q32);
+        ListaTodasQuestoes.Add(Q32);
 
         var Q33 = new Questao();
         Q33.pergunta = "Qual desses campeões é conhecido como 'O Juggernaut' de Piltover?";
@@ -512,7 +527,7 @@ public class Gerenciador
         Q33.respostacerta = 1;
         Q33.nivel = 4;
         Q33.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q33);
+        ListaTodasQuestoes.Add(Q33);
 
         var Q34 = new Questao();
         Q34.pergunta = "Qual campeão é conhecido como 'O Grande Pedregulho'?";
@@ -525,7 +540,7 @@ public class Gerenciador
         Q34.respostacerta = 1;
         Q34.nivel = 4;
         Q34.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q34);
+        ListaTodasQuestoes.Add(Q34);
 
         var Q35 = new Questao();
         Q35.pergunta = "Qual campeão é conhecido como 'O Terremoto Andante'?";
@@ -538,7 +553,7 @@ public class Gerenciador
         Q35.respostacerta = 5;
         Q35.nivel = 4;
         Q35.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q35);
+        ListaTodasQuestoes.Add(Q35);
 
         var Q36 = new Questao();
         Q36.pergunta = "Qual é a habilidade passiva de Teemo?";
@@ -551,7 +566,7 @@ public class Gerenciador
         Q36.respostacerta = 2;
         Q36.nivel = 4;
         Q36.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q36);
+        ListaTodasQuestoes.Add(Q36);
 
         var Q37 = new Questao();
         Q37.pergunta = "Qual desses campeões foi amaldiçoado por uma arma mágica?";
@@ -564,7 +579,7 @@ public class Gerenciador
         Q37.respostacerta = 4;
         Q37.nivel = 4;
         Q37.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q37);
+        ListaTodasQuestoes.Add(Q37);
 
         var Q38 = new Questao();
         Q38.pergunta = "Qual campeão tem a habilidade suprema 'Devorar'?";
@@ -577,7 +592,7 @@ public class Gerenciador
         Q38.respostacerta = 2;
         Q38.nivel = 4;
         Q38.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q38);
+        ListaTodasQuestoes.Add(Q38);
 
         var Q39 = new Questao();
         Q39.pergunta = "Qual desses campeões pode se transformar em outro jogador?";
@@ -590,7 +605,7 @@ public class Gerenciador
         Q39.respostacerta = 3;
         Q39.nivel = 4;
         Q39.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q39);
+        ListaTodasQuestoes.Add(Q39);
 
         var Q40 = new Questao();
         Q40.pergunta = "Qual desses campeões é um demônio?";
@@ -603,7 +618,7 @@ public class Gerenciador
         Q40.respostacerta = 5;
         Q40.nivel = 4;
         Q40.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q40);
+        ListaTodasQuestoes.Add(Q40);
 
         var Q41 = new Questao();
         Q41.pergunta = "Qual campeão é conhecido como 'A Mãe da Guerra'?";
@@ -616,7 +631,7 @@ public class Gerenciador
         Q41.respostacerta = 2;
         Q41.nivel = 5;
         Q41.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q41);
+        ListaTodasQuestoes.Add(Q41);
 
         var Q42 = new Questao();
         Q42.pergunta = "Qual desses campeões pode mudar de forma (metamorfose)?";
@@ -629,7 +644,7 @@ public class Gerenciador
         Q42.respostacerta = 5;
         Q42.nivel = 5;
         Q42.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q42);
+        ListaTodasQuestoes.Add(Q42);
 
         var Q43 = new Questao();
         Q43.pergunta = "Qual é a cidade natal de Ekko?";
@@ -642,7 +657,7 @@ public class Gerenciador
         Q43.respostacerta = 1;
         Q43.nivel = 5;
         Q43.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q43);
+        ListaTodasQuestoes.Add(Q43);
 
         var Q44 = new Questao();
         Q44.pergunta = "Qual campeão pode invocar um clone para confundir os inimigos?";
@@ -655,7 +670,7 @@ public class Gerenciador
         Q44.respostacerta = 5;
         Q44.nivel = 5;
         Q44.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q44);
+        ListaTodasQuestoes.Add(Q44);
 
         var Q45 = new Questao();
         Q45.pergunta = "Qual campeão é o 'Rei Arruinado'?";
@@ -668,7 +683,7 @@ public class Gerenciador
         Q45.respostacerta = 1;
         Q45.nivel = 5;
         Q45.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q45);
+        ListaTodasQuestoes.Add(Q45);
 
         var Q46 = new Questao();
         Q46.pergunta = "Qual desses campeões é um colosso de pedra?";
@@ -681,7 +696,7 @@ public class Gerenciador
         Q46.respostacerta = 2;
         Q46.nivel = 5;
         Q46.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q46);
+        ListaTodasQuestoes.Add(Q46);
 
         var Q47 = new Questao();
         Q47.pergunta = "Qual campeão tem a habilidade suprema 'Crescimento Virente'?";
@@ -694,7 +709,7 @@ public class Gerenciador
         Q47.respostacerta = 3;
         Q47.nivel = 5;
         Q47.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q47);
+        ListaTodasQuestoes.Add(Q47);
 
         var Q48 = new Questao();
         Q48.pergunta = "Qual é a habilidade passiva de Kayn ao alternar suas formas?";
@@ -707,7 +722,7 @@ public class Gerenciador
         Q48.respostacerta = 1;
         Q48.nivel = 5;
         Q48.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q48);
+        ListaTodasQuestoes.Add(Q48);
 
         var Q49 = new Questao();
         Q49.pergunta = "Qual campeão é um caçador de dragões?";
@@ -720,7 +735,7 @@ public class Gerenciador
         Q49.respostacerta = 3;
         Q49.nivel = 5;
         Q49.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q49);
+        ListaTodasQuestoes.Add(Q49);
 
         var Q50 = new Questao();
         Q50.pergunta = "Qual é a cidade natal de Twisted Fate?";
@@ -733,7 +748,7 @@ public class Gerenciador
         Q50.respostacerta = 1;
         Q50.nivel = 5;
         Q50.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q50);
+        ListaTodasQuestoes.Add(Q50);
 
         var Q51 = new Questao();
         Q51.pergunta = "Qual campeão é conhecido como 'O Defensor de Demacia'?";
@@ -746,7 +761,7 @@ public class Gerenciador
         Q51.respostacerta = 1;
         Q51.nivel = 6;
         Q51.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q51);
+        ListaTodasQuestoes.Add(Q51);
 
         var Q52 = new Questao();
         Q52.pergunta = "Qual campeão tem a habilidade suprema 'Destinizar'?";
@@ -759,7 +774,7 @@ public class Gerenciador
         Q52.respostacerta = 1;
         Q52.nivel = 6;
         Q52.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q52);
+        ListaTodasQuestoes.Add(Q52);
 
         var Q53 = new Questao();
         Q53.pergunta = "Qual desses campeões usa uma espada como arma principal?";
@@ -772,7 +787,7 @@ public class Gerenciador
         Q53.respostacerta = 5;
         Q53.nivel = 6;
         Q53.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q53);
+        ListaTodasQuestoes.Add(Q53);
 
         var Q54 = new Questao();
         Q54.pergunta = "Qual campeão é a representação física de uma tormenta?";
@@ -785,7 +800,7 @@ public class Gerenciador
         Q54.respostacerta = 5;
         Q54.nivel = 6;
         Q54.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q54);
+        ListaTodasQuestoes.Add(Q54);
 
         var Q55 = new Questao();
         Q55.pergunta = "Qual é a habilidade suprema de Karthus?";
@@ -798,7 +813,7 @@ public class Gerenciador
         Q55.respostacerta = 3;
         Q55.nivel = 6;
         Q55.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q55);
+        ListaTodasQuestoes.Add(Q55);
 
         var Q56 = new Questao();
         Q56.pergunta = "Qual campeão pode criar uma 'Força Incontrolável'?";
@@ -811,7 +826,7 @@ public class Gerenciador
         Q56.respostacerta = 5;
         Q56.nivel = 6;
         Q56.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q56);
+        ListaTodasQuestoes.Add(Q56);
 
         var Q57 = new Questao();
         Q57.pergunta = "Qual desses campeões é conhecido por ser um caçador das selvas?";
@@ -824,7 +839,7 @@ public class Gerenciador
         Q57.respostacerta = 2;
         Q57.nivel = 6;
         Q57.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q57);
+        ListaTodasQuestoes.Add(Q57);
 
         var Q58 = new Questao();
         Q58.pergunta = "Qual campeão pode voar com um dragão?";
@@ -837,7 +852,7 @@ public class Gerenciador
         Q58.respostacerta = 2;
         Q58.nivel = 6;
         Q58.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q58);
+        ListaTodasQuestoes.Add(Q58);
 
         var Q59 = new Questao();
         Q59.pergunta = "Qual campeão pode capturar almas inimigas como parte de sua passiva?";
@@ -850,7 +865,7 @@ public class Gerenciador
         Q59.respostacerta = 1;
         Q59.nivel = 6;
         Q59.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q59);
+        ListaTodasQuestoes.Add(Q59);
 
         var Q60 = new Questao();
         Q60.pergunta = "Qual campeão é conhecido como o 'Aruaceiro de Aguas de Sentina'?";
@@ -863,7 +878,7 @@ public class Gerenciador
         Q60.respostacerta = 1;
         Q60.nivel = 6;
         Q60.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q60);
+        ListaTodasQuestoes.Add(Q60);
 
         var Q61 = new Questao();
         Q61.pergunta = "Qual campeão tem a habilidade passiva 'Anime-se!'?";
@@ -876,7 +891,7 @@ public class Gerenciador
         Q61.respostacerta = 1;
         Q61.nivel = 7;
         Q61.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q61);
+        ListaTodasQuestoes.Add(Q61);
 
         var Q62 = new Questao();
         Q62.pergunta = "Qual desses campeões tem uma habilidade chamada 'Parede de Vento'?";
@@ -889,7 +904,7 @@ public class Gerenciador
         Q62.respostacerta = 2;
         Q62.nivel = 7;
         Q62.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q62);
+        ListaTodasQuestoes.Add(Q62);
 
         var Q63 = new Questao();
         Q63.pergunta = "Qual desses campeões é conhecido por carregar uma lâmina mágica?";
@@ -902,7 +917,7 @@ public class Gerenciador
         Q63.respostacerta = 1;
         Q63.nivel = 7;
         Q63.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q63);
+        ListaTodasQuestoes.Add(Q63);
 
         var Q64 = new Questao();
         Q64.pergunta = "Qual desses campeões é conhecido por sua habilidade de regeneração rápida?";
@@ -915,7 +930,7 @@ public class Gerenciador
         Q64.respostacerta = 5;
         Q64.nivel = 7;
         Q64.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q64);
+        ListaTodasQuestoes.Add(Q64);
 
         var Q65 = new Questao();
         Q65.pergunta = "Qual campeão possui a passiva 'Ataque Duplo'?";
@@ -928,7 +943,7 @@ public class Gerenciador
         Q65.respostacerta = 4;
         Q65.nivel = 7;
         Q65.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q65);
+        ListaTodasQuestoes.Add(Q65);
 
         var Q66 = new Questao();
         Q66.pergunta = "Qual campeão é conhecido como o 'Caçador Orgulhoso'?";
@@ -941,7 +956,7 @@ public class Gerenciador
         Q66.respostacerta = 1;
         Q66.nivel = 7;
         Q66.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q66);
+        ListaTodasQuestoes.Add(Q66);
 
         var Q67 = new Questao();
         Q67.pergunta = "Qual desses campeões utiliza uma âncora como arma?";
@@ -954,7 +969,7 @@ public class Gerenciador
         Q67.respostacerta = 3;
         Q67.nivel = 7;
         Q67.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q67);
+        ListaTodasQuestoes.Add(Q67);
 
         var Q68 = new Questao();
         Q68.pergunta = "Qual campeão tem a habilidade 'Espinho de odio'?";
@@ -967,7 +982,7 @@ public class Gerenciador
         Q68.respostacerta = 2;
         Q68.nivel = 7;
         Q68.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q68);
+        ListaTodasQuestoes.Add(Q68);
 
         var Q69 = new Questao();
         Q69.pergunta = "Qual desses campeões é considerado um 'Anjo Caído'?";
@@ -980,7 +995,7 @@ public class Gerenciador
         Q69.respostacerta = 2;
         Q69.nivel = 7;
         Q69.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q69);
+        ListaTodasQuestoes.Add(Q69);
 
         var Q70 = new Questao();
         Q70.pergunta = "Qual é a cidade natal de Ekko?";
@@ -993,7 +1008,7 @@ public class Gerenciador
         Q70.respostacerta = 2;
         Q70.nivel = 7;
         Q70.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q70);
+        ListaTodasQuestoes.Add(Q70);
 
         var Q71 = new Questao();
         Q71.pergunta = "Qual campeão é conhecido como 'O Exterminador de Tanques'?";
@@ -1006,7 +1021,7 @@ public class Gerenciador
         Q71.respostacerta = 2;
         Q71.nivel = 8;
         Q71.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q71);
+        ListaTodasQuestoes.Add(Q71);
 
         var Q72 = new Questao();
         Q72.pergunta = "Qual campeão utiliza o veneno como principal ferramenta de combate?";
@@ -1019,7 +1034,7 @@ public class Gerenciador
         Q72.respostacerta = 5;
         Q72.nivel = 8;
         Q72.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q72);
+        ListaTodasQuestoes.Add(Q72);
 
         var Q73 = new Questao();
         Q73.pergunta = "Qual desses campeões NÃO pertence ao grupo 'As Sentinelas da Luz'?";
@@ -1032,7 +1047,7 @@ public class Gerenciador
         Q73.respostacerta = 1;
         Q73.nivel = 8;
         Q73.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q73);
+        ListaTodasQuestoes.Add(Q73);
 
         var Q74 = new Questao();
         Q74.pergunta = "Qual campeão é conhecido por sua habilidade de se transformar em um dragão?";
@@ -1045,7 +1060,7 @@ public class Gerenciador
         Q74.respostacerta = 1;
         Q74.nivel = 8;
         Q74.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q74);
+        ListaTodasQuestoes.Add(Q74);
 
         var Q75 = new Questao();
         Q75.pergunta = "Qual campeão tem a habilidade 'Surto Elétrico'?";
@@ -1058,7 +1073,7 @@ public class Gerenciador
         Q75.respostacerta = 2;
         Q75.nivel = 8;
         Q75.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q75);
+        ListaTodasQuestoes.Add(Q75);
 
         var Q76 = new Questao();
         Q76.pergunta = "Qual campeão é conhecido como 'O Monstro de Zaun'?";
@@ -1071,7 +1086,7 @@ public class Gerenciador
         Q76.respostacerta = 3;
         Q76.nivel = 8;
         Q76.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q76);
+        ListaTodasQuestoes.Add(Q76);
 
         var Q77 = new Questao();
         Q77.pergunta = "Qual desses campeões é famoso por sua habilidade de controlar a mente de inimigos?";
@@ -1084,7 +1099,7 @@ public class Gerenciador
         Q77.respostacerta = 4;
         Q77.nivel = 8;
         Q77.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q77);
+        ListaTodasQuestoes.Add(Q77);
 
         var Q78 = new Questao();
         Q78.pergunta = "Qual campeão utiliza cogumelos como armadilha?";
@@ -1097,7 +1112,7 @@ public class Gerenciador
         Q78.respostacerta = 1;
         Q78.nivel = 8;
         Q78.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q78);
+        ListaTodasQuestoes.Add(Q78);
 
         var Q79 = new Questao();
         Q79.pergunta = "Qual campeão fica imortal sob sua 'Forma Suprema'?";
@@ -1110,7 +1125,7 @@ public class Gerenciador
         Q79.respostacerta = 2;
         Q79.nivel = 9;
         Q79.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q79);
+        ListaTodasQuestoes.Add(Q79);
 
         var Q80 = new Questao();
         Q80.pergunta = "Qual campeão é conhecido como o 'Deus do Trovão'?";
@@ -1123,7 +1138,7 @@ public class Gerenciador
         Q80.respostacerta = 2;
         Q80.nivel = 9;
         Q80.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q80);
+        ListaTodasQuestoes.Add(Q80);
 
         var Q81 = new Questao();
         Q81.pergunta = "Qual campeão utiliza portais para se teletransportar e mover aliados?";
@@ -1136,7 +1151,7 @@ public class Gerenciador
         Q81.respostacerta = 1;
         Q81.nivel = 9;
         Q81.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q81);
+        ListaTodasQuestoes.Add(Q81);
 
         var Q82 = new Questao();
         Q82.pergunta = "Qual campeão possui a habilidade de 'Correntes Etéreas'?";
@@ -1149,7 +1164,7 @@ public class Gerenciador
         Q82.respostacerta = 1;
         Q82.nivel = 9;
         Q82.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q82);
+        ListaTodasQuestoes.Add(Q82);
 
         var Q83 = new Questao();
         Q83.pergunta = "Qual campeão tentou ressucitar sua esposa falecida?";
@@ -1162,7 +1177,7 @@ public class Gerenciador
         Q83.respostacerta = 1;
         Q83.nivel = 9;
         Q83.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q83);
+        ListaTodasQuestoes.Add(Q83);
 
         var Q84 = new Questao();
         Q84.pergunta = "Qual campeão é famoso por sua habilidade de se clonar e enganar os inimigos?";
@@ -1175,7 +1190,7 @@ public class Gerenciador
         Q84.respostacerta = 5;
         Q84.nivel = 9;
         Q84.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q84);
+        ListaTodasQuestoes.Add(Q84);
 
         var Q85 = new Questao();
         Q85.pergunta = "Qual campeão tem a habilidade de prender inimigos em uma prisão de energia?";
@@ -1188,7 +1203,7 @@ public class Gerenciador
         Q85.respostacerta = 3;
         Q85.nivel = 9;
         Q85.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q85);
+        ListaTodasQuestoes.Add(Q85);
 
         var Q86 = new Questao();
         Q86.pergunta = "Qual campeão é um andarilho espiritual de Ionia?";
@@ -1201,7 +1216,7 @@ public class Gerenciador
         Q86.respostacerta = 2;
         Q86.nivel = 10;
         Q86.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q86);
+        ListaTodasQuestoes.Add(Q86);
 
         var Q87 = new Questao();
         Q87.pergunta = "Qual campeão é conhecido como o 'Coração de Freljord'?";
@@ -1214,7 +1229,7 @@ public class Gerenciador
         Q87.respostacerta = 2;
         Q87.nivel = 10;
         Q87.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q87);
+        ListaTodasQuestoes.Add(Q87);
 
         var Q88 = new Questao();
         Q88.pergunta = "Qual desses campeões pode criar portais para outras dimensões?";
@@ -1227,7 +1242,7 @@ public class Gerenciador
         Q88.respostacerta = 1;
         Q88.nivel = 10;
         Q88.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q88);
+        ListaTodasQuestoes.Add(Q88);
 
         var Q89 = new Questao();
         Q89.pergunta = "Qual campeão é famoso por suas lâminas dançantes?";
@@ -1240,7 +1255,7 @@ public class Gerenciador
         Q89.respostacerta = 2;
         Q89.nivel = 10;
         Q89.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q89);
+        ListaTodasQuestoes.Add(Q89);
 
         var Q90 = new Questao();
         Q90.pergunta = "Qual campeão é o irmão de Darius?";
@@ -1253,7 +1268,7 @@ public class Gerenciador
         Q90.respostacerta = 1;
         Q90.nivel = 10;
         Q90.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q90);
+        ListaTodasQuestoes.Add(Q90);
 
         var Q91 = new Questao();
         Q91.pergunta = "Qual campeão tem um poro mordomo?";
@@ -1266,7 +1281,7 @@ public class Gerenciador
         Q91.respostacerta = 5;
         Q91.nivel = 10;
         Q91.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q91);
+        ListaTodasQuestoes.Add(Q91);
 
         var Q92 = new Questao();
         Q92.pergunta = "Qual campeão é conhecido como 'A Vingança Reencarnada'?";
@@ -1279,7 +1294,7 @@ public class Gerenciador
         Q92.respostacerta = 1;
         Q92.nivel = 10;
         Q92.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q92);
+        ListaTodasQuestoes.Add(Q92);
 
         var Q93 = new Questao();
         Q93.pergunta = "Qual campeão é especialista em atravessar paredes?";
@@ -1292,7 +1307,7 @@ public class Gerenciador
         Q93.respostacerta = 1;
         Q93.nivel = 10;
         Q93.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q93);
+        ListaTodasQuestoes.Add(Q93);
 
         var Q94 = new Questao();
         Q94.pergunta = "Qual campeão tem habilidades relacionadas com corvos?";
@@ -1305,7 +1320,7 @@ public class Gerenciador
         Q94.respostacerta = 1;
         Q94.nivel = 10;
         Q94.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q94);
+        ListaTodasQuestoes.Add(Q94);
 
         var Q95 = new Questao();
         Q95.pergunta = "Qual campeão é conhecido por ser uma arma viva?";
@@ -1318,7 +1333,7 @@ public class Gerenciador
         Q95.respostacerta = 5;
         Q95.nivel = 10;
         Q95.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q95);
+        ListaTodasQuestoes.Add(Q95);
 
         var Q96 = new Questao();
         Q96.pergunta = "Qual campeão tem uma habilidade chamada 'Constelação Cadente'?";
@@ -1331,7 +1346,7 @@ public class Gerenciador
         Q96.respostacerta = 1;
         Q96.nivel = 10;
         Q96.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q96);
+        ListaTodasQuestoes.Add(Q96);
 
         var Q97 = new Questao();
         Q97.pergunta = "Qual campeão é um vastaya de 9 caudas?";
@@ -1344,7 +1359,7 @@ public class Gerenciador
         Q97.respostacerta = 5;
         Q97.nivel = 10;
         Q97.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q97);
+        ListaTodasQuestoes.Add(Q97);
 
         var Q98 = new Questao();
         Q98.pergunta = "Qual campeão tem uma habilidade de regeneração extremamente rápida após sofrer ferimentos graves?";
@@ -1357,7 +1372,7 @@ public class Gerenciador
         Q98.respostacerta = 3;
         Q98.nivel = 10;
         Q98.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q98);
+        ListaTodasQuestoes.Add(Q98);
 
         var Q99 = new Questao();
         Q99.pergunta = "Qual campeão é conhecido como o 'Terror das Areias'?";
@@ -1370,7 +1385,7 @@ public class Gerenciador
         Q99.respostacerta = 2;
         Q99.nivel = 10;
         Q99.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q99);
+        ListaTodasQuestoes.Add(Q99);
 
         var Q100 = new Questao();
         Q100.pergunta = "Qual campeão é famoso por sua habilidade de criar globos de neve?";
@@ -1383,7 +1398,7 @@ public class Gerenciador
         Q100.respostacerta = 1;
         Q100.nivel = 10;
         Q100.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
-        ListaQuestoes.Add(Q100);
+        ListaTodasQuestoes.Add(Q100);
 
         ProximaPergunta();
     }

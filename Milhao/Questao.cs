@@ -1,6 +1,6 @@
 namespace Milhao;
 
-public class Questao
+public class Questao: IEquatable<Questao>
 {
 
     public string pergunta;
@@ -34,6 +34,11 @@ public class Questao
     Button buttonResposta5;
 
     Image componenteImagem;
+
+    public bool Equals(Questao q)
+    {
+        return this.nivel == q.nivel;
+    }
 
     public void Desenhar()
     {

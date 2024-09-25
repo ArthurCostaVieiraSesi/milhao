@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Milhao.VitoriaPage"
+             Shell.NavBarIsVisible="false"
+             BackgroundColor="#0b4462">
+
+    <Grid RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="370"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Image Source="vitoria.jpg"
+        Grid.Row="0"/>
+
+        <Label  Text="Você ganhou R$1.000.000 de dinheiro imaginario! E se você achar ruim e quiser ganhar dinheiro de verdade, lembre-se: A imaginação é a melhor dadiva que temos, aproveite e imagine suas riquezas inexistentes! (Até porque, nunca que eu iria dar tanta grana pra você né...)"
+                TextColor="#abee93"
+                Padding="5,10,5,0"
+                HorizontalTextAlignment="Center"
+                BackgroundColor="#2d938e"
+                Grid.Row="1"/>
+
+        <Button Text="Voltar para o inicio"
+                Grid.Row="2"
+                TextColor="#2d938e"
+                Clicked="Sorocaba"
+                BackgroundColor="#abee93"/>
+
+        </Grid>
+
+</ContentPage>

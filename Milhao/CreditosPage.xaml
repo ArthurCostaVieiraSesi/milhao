@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Milhao.CreditosPage"
+             Shell.NavBarIsVisible="false"
+             BackgroundColor="#0b4462">
+
+    <Grid RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Text="Jogo produzido completamente por Arthur Costa, porém é valído destacar certo auxilio dos ensinos bem ensinados do professor Thiago Macedo Davince. Os dados coletados para a produção do quiz são de autoria de Riot Games."
+                TextColor="#2d938e"
+                BackgroundColor="#abee93"
+                Grid.Row="3"/>
+
+        <Label Text="CREDITOS:"
+                FontSize="30"
+                HorizontalTextAlignment="Center"
+                TextColor="#abee93"
+                Grid.Row="1"/>
+
+        <Image Source="creditos.jpg"
+                Grid.Row="2"/>
+
+        <Button Text="Voltar"
+                Grid.Row="4"
+                Clicked="Creditu"
+                BackgroundColor="#abee93"
+                TextColor="#2d938e"/>
+
+    </Grid>
+
+</ContentPage>

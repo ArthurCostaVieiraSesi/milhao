@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Milhao.InicioPage"
+             Shell.NavBarIsVisible="false"
+             BackgroundColor="#0b4462">
+
+    <Grid RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Image Source="logo.png"
+        Grid.Row="1"/>
+
+        <Label  Text="Seja bem-vindo(a) para o Show do milhão: League of Legends! O jogo feito para te fazer perder tempo e esperança! Aproveite S2"
+                TextColor="#abee93"
+                Padding="5,10,5,0"
+                HorizontalTextAlignment="Center"
+                BackgroundColor="#2d938e"
+                Grid.Row="2"/>
+
+        <Button Text="Começar"
+                Grid.Row="3"
+                TextColor="#2d938e"
+                Clicked="Comecar"
+                BackgroundColor="#abee93"/>
+
+        <Button Text="Creditos"
+                Grid.Row="4"
+                Clicked="Credite"
+                TextColor="#2d938e"
+                BackgroundColor="#abee93"/>
+
+        </Grid>
+
+</ContentPage>
