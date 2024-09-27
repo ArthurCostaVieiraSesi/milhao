@@ -32,7 +32,7 @@
         </Grid.ColumnDefinitions>
 
         <Label x:Name="labelPontuacao"
-                Text="Pontuação:"
+                Text="Pontuação: R$0"
                 TextColor="#abee93"
                 Padding="5,10,5,0"
                 HorizontalTextAlignment="Center"
@@ -40,7 +40,7 @@
                 Grid.Column="0"/>
 
         <Label x:Name="labelNivel"
-                Text="Nivel:"
+                Text="Nivel: 0"
                 TextColor="#abee93"
                 Padding="5,10,5,0"
                 HorizontalTextAlignment="Center"
