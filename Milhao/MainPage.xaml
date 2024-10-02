@@ -107,7 +107,9 @@
                 BackgroundColor="#2d938e"/>
 
         <Button Text="Placas"
+                x:Name="buttonPlaca"
                 Grid.Column="1"
+                Clicked="Placa"
                 BackgroundColor="#2d938e"/>
 
         <Button Text="Nerds"

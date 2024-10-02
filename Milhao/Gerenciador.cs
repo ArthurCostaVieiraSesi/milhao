@@ -5,14 +5,17 @@ public class Gerenciador
 
     List<Questao> ListaTodasQuestoes = new List<Questao>();
     List<Questao> ListaTodasQuestoesRespondidas = new List<Questao>();
-    Questao questaoCorrente;
+    public Questao questaoCorrente;
     Label labelPontuacao;
     Label labelNivel;
 
-    public Gerenciador(Label labelPergunta, Label labelPont, Label labelNivel, Button buttonResposta1, Button buttonResposta2, Button buttonResposta3, Button buttonResposta4, Button buttonResposta5, Image compImg)
+    Button buttonPlaca;
+
+    public Gerenciador(Label labelPergunta, Label labelPont, Label labelNivel, Button buttonPlaca, Button buttonResposta1, Button buttonResposta2, Button buttonResposta3, Button buttonResposta4, Button buttonResposta5, Image compImg)
     {
         CriarQuestoes(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
         labelPontuacao = labelPont;
+        this.buttonPlaca = buttonPlaca;
         this.labelNivel = labelNivel;
     }
     
@@ -79,7 +82,7 @@ public class Gerenciador
         else
         {
             await App.Current.MainPage.DisplayAlert("Burro", "Você errou, é facil falar mal de você, dificil é acreditar que você consegue! Aqui, é só regresso! ;)", "Ok");
-            Inicializar();
+            Application.Current.MainPage = new InicioPage();
         }
     }
 
@@ -94,6 +97,7 @@ public class Gerenciador
         Pontuacao = 0;
         NivelAtual = 1;
         ListaTodasQuestoesRespondidas.Clear();
+        buttonPlaca.IsVisible = true;
         ProximaPergunta();
     }
 

@@ -60,6 +60,11 @@ public class Questao: IEquatable<Questao>
         buttonResposta4.TextColor = Color.FromRgba("#2d938e");
         buttonResposta5.BackgroundColor = Color.FromRgba("#abee93");
         buttonResposta5.TextColor = Color.FromRgba("#2d938e");
+        buttonResposta1.IsVisible = true;
+        buttonResposta2.IsVisible = true;
+        buttonResposta3.IsVisible = true;
+        buttonResposta4.IsVisible = true;
+        buttonResposta5.IsVisible = true;
     }
 
     private Button buttonEscolhido(int respostaescolhida)
