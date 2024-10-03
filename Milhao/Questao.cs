@@ -65,6 +65,11 @@ public class Questao: IEquatable<Questao>
         buttonResposta3.IsVisible = true;
         buttonResposta4.IsVisible = true;
         buttonResposta5.IsVisible = true;
+        buttonResposta1.Text = buttonResposta1.Text;
+        buttonResposta2.Text = buttonResposta2.Text;
+        buttonResposta3.Text = buttonResposta3.Text;
+        buttonResposta4.Text = buttonResposta4.Text;
+        buttonResposta5.Text = buttonResposta5.Text;
     }
 
     private Button buttonEscolhido(int respostaescolhida)

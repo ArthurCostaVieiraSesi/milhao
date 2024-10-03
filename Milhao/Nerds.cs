@@ -8,331 +8,163 @@ public class Nerds : IAjuda
         {
 
             case 1:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 25%";
+                buttonResposta1.Text = buttonResposta1.Text + "=> 75%";
                 buttonResposta2.Text = buttonResposta2.Text + "=> 25%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 25%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 25%";
+                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
+                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
                 buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
                 break;
 
             case 2:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 25%";
+                buttonResposta1.Text = buttonResposta1.Text + "=> 75%";
+                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
                 buttonResposta3.Text = buttonResposta3.Text + "=> 25%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 25%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 25%";
+                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
+                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
                 break;
 
             case 3:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 25%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 25%";
+                buttonResposta1.Text = buttonResposta1.Text + "=> 75%";
+                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
                 buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
                 buttonResposta4.Text = buttonResposta4.Text + "=> 25%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 25%";
+                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
                 break;
 
             case 4:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 25%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 25%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 25%";
+                buttonResposta1.Text = buttonResposta1.Text + "=> 75%";
+                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
+                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
                 buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
                 buttonResposta5.Text = buttonResposta5.Text + "=> 25%";
                 break;
 
             case 5:
                 buttonResposta1.Text = buttonResposta1.Text + "=> 25%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 25%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 25%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 25%";
+                buttonResposta2.Text = buttonResposta2.Text + "=> 75%";
+                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
+                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
+                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
                 break;
 
             case 6:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 100%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
+                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
+                buttonResposta2.Text = buttonResposta2.Text + "=> 75%";
+                buttonResposta3.Text = buttonResposta3.Text + "=> 25%";
                 buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
                 buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
                 break;
 
             case 7:
                 buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 100%";
+                buttonResposta2.Text = buttonResposta2.Text + "=> 75%";
                 buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
+                buttonResposta4.Text = buttonResposta4.Text + "=> 25%";
                 buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
                 break;
 
             case 8:
                 buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 100%";
+                buttonResposta2.Text = buttonResposta2.Text + "=> 75%";
+                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
                 buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
+                buttonResposta5.Text = buttonResposta5.Text + "=> 25%";
                 break;
 
             case 9:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
+                buttonResposta1.Text = buttonResposta1.Text + "=> 25%";
                 buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 100%";
+                buttonResposta3.Text = buttonResposta3.Text + "=> 75%";
+                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
                 buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
                 break;
 
             case 10:
                 buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
+                buttonResposta2.Text = buttonResposta2.Text + "=> 25%";
+                buttonResposta3.Text = buttonResposta3.Text + "=> 75%";
                 buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 100%";
+                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
                 break;
 
             case 11:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 75%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 25%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
-                break;
-
-            case 12:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 75%";
+                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
                 buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 25%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
-                break;
-
-            case 13:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 75%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
+                buttonResposta3.Text = buttonResposta3.Text + "=> 75%";
                 buttonResposta4.Text = buttonResposta4.Text + "=> 25%";
                 buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
                 break;
 
-            case 14:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 75%";
+            case 12:
+                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
                 buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
+                buttonResposta3.Text = buttonResposta3.Text + "=> 75%";
                 buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
                 buttonResposta5.Text = buttonResposta5.Text + "=> 25%";
                 break;
 
-            case 15:
+            case 13:
                 buttonResposta1.Text = buttonResposta1.Text + "=> 25%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 75%";
+                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
                 buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
+                buttonResposta4.Text = buttonResposta4.Text + "=> 75%";
+                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
+                break;
+
+            case 14:
+                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
+                buttonResposta2.Text = buttonResposta2.Text + "=> 25%";
+                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
+                buttonResposta4.Text = buttonResposta4.Text + "=> 75%";
+                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
+                break;
+
+            case 15:
+                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
+                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
+                buttonResposta3.Text = buttonResposta3.Text + "=> 25%";
+                buttonResposta4.Text = buttonResposta4.Text + "=> 75%";
                 buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
                 break;
 
             case 16:
                 buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 75%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 25%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
+                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
+                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
+                buttonResposta4.Text = buttonResposta4.Text + "=> 75%";
+                buttonResposta5.Text = buttonResposta5.Text + "=> 25%";
                 break;
 
             case 17:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 75%";
+                buttonResposta1.Text = buttonResposta1.Text + "=> 25%";
+                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
                 buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 25%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
+                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
+                buttonResposta5.Text = buttonResposta5.Text + "=> 75%";
                 break;
 
             case 18:
                 buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 75%";
+                buttonResposta2.Text = buttonResposta2.Text + "=> 25%";
                 buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
                 buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 25%";
+                buttonResposta5.Text = buttonResposta5.Text + "=> 75%";
                 break;
 
             case 19:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 25%";
+                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
                 buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 75%";
+                buttonResposta3.Text = buttonResposta3.Text + "=> 25%";
                 buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
+                buttonResposta5.Text = buttonResposta5.Text + "=> 75%";
                 break;
 
             case 20:
                 buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 25%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 75%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
-                break;
-
-            case 21:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 75%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 25%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
-                break;
-
-            case 22:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 75%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 25%";
-                break;
-
-            case 23:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 25%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 75%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
-                break;
-
-            case 24:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 25%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 75%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
-                break;
-
-            case 25:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 25%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 75%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
-                break;
-
-            case 26:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 75%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 25%";
-                break;
-
-            case 27:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 25%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 75%";
-                break;
-
-            case 28:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 25%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 75%";
-                break;
-
-            case 29:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 25%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 75%";
-                break;
-
-            case 30:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
                 buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
                 buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
                 buttonResposta4.Text = buttonResposta4.Text + "=> 25%";
                 buttonResposta5.Text = buttonResposta5.Text + "=> 75%";
-                break;
-
-            case 31:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 50%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 50%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
-                break;
-
-            case 32:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 50%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 50%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
-                break;
-
-            case 33:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 50%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 50%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
-                break;
-
-            case 34:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 50%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 50%";
-                break;
-
-            case 35:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 50%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 50%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
-                break;
-
-            case 36:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 50%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 50%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
-                break;
-
-            case 37:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 50%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 50%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
-                break;
-
-            case 38:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 50%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 50%";
-                break;
-
-            case 39:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 50%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 50%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 0%";
-                break;
-
-            case 40:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 50%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 0%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 50%";
-                break;
-
-            case 41:
-                buttonResposta1.Text = buttonResposta1.Text + "=> 0%";
-                buttonResposta2.Text = buttonResposta2.Text + "=> 0%";
-                buttonResposta3.Text = buttonResposta3.Text + "=> 0%";
-                buttonResposta4.Text = buttonResposta4.Text + "=> 50%";
-                buttonResposta5.Text = buttonResposta5.Text + "=> 50%";
                 break;
 
 

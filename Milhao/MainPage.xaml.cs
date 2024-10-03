@@ -51,5 +51,11 @@ public partial class MainPage : ContentPage
 		buttonNerd.IsVisible = false;
 	}
 
+	void pulo(object sender, EventArgs e)
+	{
+		gerenciador.ProximaPergunta();
+		buttonPulo.IsVisible = false;
+	}
+
 }
 

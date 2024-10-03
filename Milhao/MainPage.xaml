@@ -104,6 +104,8 @@
 
         <Button Text="Pular"
                 Grid.Column="0"
+                Clicked="pulo"
+                x:Name="buttonPulo"
                 BackgroundColor="#2d938e"/>
 
         <Button Text="Placas"
