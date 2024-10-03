@@ -37,7 +37,7 @@ public class Questao: IEquatable<Questao>
 
     public bool Equals(Questao q)
     {
-        return this.nivel == q.nivel;
+        return this.nivel == q.nivel && this.pergunta == q.pergunta;
     }
 
     public void Desenhar()
