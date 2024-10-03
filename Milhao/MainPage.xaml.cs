@@ -7,7 +7,7 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-		gerenciador = new Gerenciador(labelPergunta, labelPontuacao, labelNivel, buttonPlaca, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, Img);
+		gerenciador = new Gerenciador(labelPergunta, labelPontuacao, labelNivel, buttonNerd, buttonPlaca, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, Img);
 	}
 
 	void Clicked01(object sender, EventArgs e)
@@ -41,6 +41,14 @@ public partial class MainPage : ContentPage
 		a.ConfiguraDesenho(buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
 		a.RealizaAjuda(gerenciador.questaoCorrente);
 		buttonPlaca.IsVisible = false;
+	}
+
+	void Nerd(object sender, EventArgs e)
+	{
+		var b = new Nerds();
+		b.ConfiguraDesenho(buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+		b.RealizaAjuda(gerenciador.questaoCorrente);
+		buttonNerd.IsVisible = false;
 	}
 
 }

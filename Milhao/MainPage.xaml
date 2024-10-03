@@ -113,6 +113,8 @@
                 BackgroundColor="#2d938e"/>
 
         <Button Text="Nerds"
+                x:Name="buttonNerd"
+                Clicked="Nerd"
                 Grid.Column="2"
                 BackgroundColor="#2d938e"/>
 

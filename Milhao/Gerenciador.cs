@@ -11,11 +11,14 @@ public class Gerenciador
 
     Button buttonPlaca;
 
-    public Gerenciador(Label labelPergunta, Label labelPont, Label labelNivel, Button buttonPlaca, Button buttonResposta1, Button buttonResposta2, Button buttonResposta3, Button buttonResposta4, Button buttonResposta5, Image compImg)
+    Button buttonNerd;
+
+    public Gerenciador(Label labelPergunta, Label labelPont, Label labelNivel, Button buttonNerd, Button buttonPlaca, Button buttonResposta1, Button buttonResposta2, Button buttonResposta3, Button buttonResposta4, Button buttonResposta5, Image compImg)
     {
         CriarQuestoes(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, compImg);
         labelPontuacao = labelPont;
         this.buttonPlaca = buttonPlaca;
+        this.buttonNerd = buttonNerd;
         this.labelNivel = labelNivel;
     }
     
@@ -98,6 +101,7 @@ public class Gerenciador
         NivelAtual = 1;
         ListaTodasQuestoesRespondidas.Clear();
         buttonPlaca.IsVisible = true;
+        buttonNerd.IsVisible = true;
         ProximaPergunta();
     }
 
